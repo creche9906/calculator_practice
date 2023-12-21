@@ -137,6 +137,7 @@ class Main(QDialog):
             self.equation_solution.setText(square_root)
         except Exception as e:
             self.equation_solution.setText("Error")
+    
     def button_square_clicked(self):
         equation = self.equation_solution.text()
         try:
@@ -144,7 +145,6 @@ class Main(QDialog):
             self.equation_solution.setText(square)
         except Exception as e:
             self.equation_solution.setText("Error")
-
 
 if __name__ == '__main__':
     app = QApplication(sys.argv)
