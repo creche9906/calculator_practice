@@ -1,4 +1,5 @@
 import sys
+import math
 from PyQt5.QtWidgets import *
 
 class Main(QDialog):
@@ -76,6 +77,9 @@ class Main(QDialog):
         button_clearE.clicked.connect(self.button_clearE_clicked)
         button_backspace.clicked.connect(self.button_backspace_clicked)
         button_remainder.clicked.connect(lambda state, operation="%": self.button_operation_clicked(operation))
+        button_reciprocal.clicked.connect(self.button_reciprocal_clicked)
+        button_root.clicked.connect(self.button_root_clicked)
+        button_square.clicked.connect(self.button_square_clicked)
 
         # =, clear, backspace 버튼을 layout_clear_equal 레이아웃에 추가
 
@@ -126,7 +130,29 @@ class Main(QDialog):
         equation = self.equation_solution.text()
         equation = equation[:-1]
         self.equation_solution.setText(equation)
-        
+    def button_reciprocal_clicked(self):
+        equation = self.equation_solution.text()
+        try:
+            reciprocal = str(1 / eval(equation))
+            self.equation_solution.setText(reciprocal)
+        except Exception as e:
+            self.equation_solution.setText("Error")
+
+    def button_root_clicked(self):
+        equation = self.equation_solution.text()
+        try:
+            square_root = str(math.sqrt(eval(equation)))
+            self.equation_solution.setText(square_root)
+        except Exception as e:
+            self.equation_solution.setText("Error")
+
+    def button_square_clicked(self):
+        equation = self.equation_solution.text()
+        try:
+            square = str(eval(equation) ** 2)
+            self.equation_solution.setText(square)
+        except Exception as e:
+            self.equation_solution.setText("Error")
 
 if __name__ == '__main__':
     app = QApplication(sys.argv)
